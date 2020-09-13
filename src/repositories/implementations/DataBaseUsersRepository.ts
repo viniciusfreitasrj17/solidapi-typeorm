@@ -17,4 +17,14 @@ export class DataBaseUsersRepository implements IUserRepository {
 
     await repo.save(user);
   }
+
+  async listUsers(): Promise<User[] | undefined> {
+    const repo = getRepository(User);
+
+    const users = repo.find();
+
+    if (users) {
+      return users;
+    }
+  }
 }
